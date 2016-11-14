@@ -3,18 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>Hello World | Hexo</title>
 
   <!-- keywords -->
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hello World">
+<meta property="og:url" content="http://yoursite.com/2016/11/10/hello-world/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
+<meta property="og:updated_time" content="2016-11-14T05:57:02.825Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Hello World">
+<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -160,169 +167,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-sort" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/11/14/sort/" class="article-date">
-  	<time datetime="2016-11-14T06:14:32.719Z" itemprop="datePublished">2016-11-14</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="要求："><a href="#要求：" class="headerlink" title="要求："></a>要求：</h2><ul>
-<li>一个字符串中，每个单词中都包含一个数字，数字的大小决定最后这个单词的所在位置</li>
-<li>如果字符串是空的，返回空字符串</li>
-</ul>
-<h2 id="Example："><a href="#Example：" class="headerlink" title="Example："></a>Example：</h2><ul>
-<li>“is2 Thi1s T4est 3a”  =&gt; return “Thi1s is2 3a T4est”</li>
-</ul>
-<h2 id="我的代码："><a href="#我的代码：" class="headerlink" title="我的代码："></a>我的代码：</h2><pre><code>function order(words){
-
-  //将字符串转化为数组
-
-  var arr = words.split(&apos; &apos;);
-
-  //利用map方法遍历数组中的每一个元素
-
-      var num = arr.map(function(item,index){
-
-             for(var i = 0;i &lt; item.length; i ++){
-                 //提取每个元素中包含的数字，并返回出去；
-                  if(!isNaN(item[i])){
-                    return item[i]
-                   }
-             }
-      })
-
-     for(var i = 0; i &lt; arr.length; i ++){
-
-        for(var j = 0; j &lt; num.length - 1 - i;j ++){
-        //对数组中的每个元素进行比较，将大的元素赋值给变量temp
-           if(num[j] &gt; num[j+1]){
-
-            var temp = num[j];
-            //  对元素进行交换
-            num[j] = num[j+1];
-
-            num[j+1] = temp; 
-
-            temp = arr[i];
-
-            arr[j] = arr[j+1];
-
-            arr[j+1] = temp;
-           }
-        }
-     }
-      return arr.join(&apos; &apos;);
- }
- console.log(order(&quot;4of Fo1r pe6ople g3ood th5e the2&quot;));
-</code></pre><h3 id="大神代码："><a href="#大神代码：" class="headerlink" title="大神代码："></a>大神代码：</h3><pre><code>function order(words) {
-  return words.split(&quot; &quot;).sort((a, b) =&gt; a.replace(/[^\d]/g, &quot;&quot;) - b.replace(/[^\d]/g, &quot;&quot;)).join(&quot; &quot;)
-}
-</code></pre><h3 id="sort-方法："><a href="#sort-方法：" class="headerlink" title="sort()方法："></a>sort()方法：</h3><pre><code>1. arrayObject.sort(sortby)；参数sortby可选。规定排序顺序。必须是函数。
-2. 若 a 小于 b，在排序后的数组中 a 应该出现在 b 之前，则返回一个小于 0 的值。
-3. 若 a 等于 b，则返回 0。
-4. a 大于 b，则返回一个大于 0 的值。
-</code></pre><h3 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h3><pre><code>var arr = [23,12,1,34,116,8,18,37,56,50];
-  function sequence(a,b){
-    return a - b;
-  }
-console.log(arr.sort(sequence));
-</code></pre><h3 id="replace-regexp-replacement-方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。"><a href="#replace-regexp-replacement-方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。" class="headerlink" title="replace(regexp,replacement) 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。"></a>replace(regexp,replacement) 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</h3><pre><code>1. 接收两个参数；
-2. 第一个参数代表的是被替换的元素
-3. 第二个参数是要替换的新元素
-</code></pre><h3 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h3><pre><code>字符串 stringObject 的 replace() 方法执行的是查找并替换的操作。它将在 stringObject 中查找与 regexp 相匹配的子字符串，然后用 replacement 来替换这些子串。如果 regexp 具有全局标志 g，那么 replace() 方法将替换所有匹配的子串。否则，它只替换第一个匹配子串。
-
-replacement 可以是字符串，也可以是函数。如果它是字符串，那么没有匹配都将由字符串替换。但是 replacement 中的 $ 字符具有特定的含义。如下表所示，它说明从模式匹配得到的字符串将用于替换。           
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-My" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/11/10/My/" class="article-date">
-  	<time datetime="2016-11-10T07:34:25.000Z" itemprop="datePublished">2016-11-10</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/My/">
-        My
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="nhkfdgnk"><a href="#nhkfdgnk" class="headerlink" title="nhkfdgnk"></a>nhkfdgnk</h2>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/11/10/hello-world/" class="article-date">
@@ -338,15 +183,21 @@ replacement 可以是字符串，也可以是函数。如果它是字符串，�
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/10/hello-world/">
-        Hello World
-        
-      </a>
+    <h1 class="article-title" itemprop="name">
+      Hello World
+      
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -364,28 +215,46 @@ replacement 可以是字符串，也可以是函数。如果它是字符串，�
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/10/My/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          My
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
   
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -409,8 +278,8 @@ replacement 可以是字符串，也可以是函数。如果它是字符串，�
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

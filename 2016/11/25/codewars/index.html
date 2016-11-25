@@ -9,16 +9,34 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[tjkt]">
+  <meta name="description" content="description:An Arithmetic Progression is defined as one in which 
+          等差数列
+there is a constant difference between the consecutive
+
+terms of a given series of numbers.
+
+一个等差数列的定义是一个有一个恒定连续的区别给定的一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="codewars">
 <meta property="og:url" content="http://yoursite.com/2016/11/25/codewars/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="[tjkt]">
-<meta property="og:updated_time" content="2016-11-25T02:37:54.685Z">
+<meta property="og:description" content="description:An Arithmetic Progression is defined as one in which 
+          等差数列
+there is a constant difference between the consecutive
+
+terms of a given series of numbers.
+
+一个等差数列的定义是一个有一个恒定连续的区别给定的一">
+<meta property="og:updated_time" content="2016-11-25T03:54:17.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="codewars">
-<meta name="twitter:description" content="[tjkt]">
+<meta name="twitter:description" content="description:An Arithmetic Progression is defined as one in which 
+          等差数列
+there is a constant difference between the consecutive
+
+terms of a given series of numbers.
+
+一个等差数列的定义是一个有一个恒定连续的区别给定的一">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -199,10 +217,78 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ul>
-<li>[tjkt]</li>
-</ul>
+        <h2 id="description"><a href="#description" class="headerlink" title="description:"></a>description:</h2><pre><code>An Arithmetic Progression is defined as one in which 
+          等差数列
+there is a constant difference between the consecutive
 
+terms of a given series of numbers.
+
+一个等差数列的定义是一个有一个恒定连续的区别给定的一系列的数字。
+
+You are provided with consecutive elements of an Arithmetic 
+         提供            连续
+Progression. 
+
+给你提供一个连续的等差数列
+
+There is however one hitch: Exactly one term from the original 
+
+series is missing from the set of numbers which have been 
+
+given to you. The rest of the given series is the same as 
+
+original AP. Find the missing term.
+
+然而有一个问题：这个连续的等差数列中有一个元素已经失踪，你需要找到这个
+
+丢失的这个数字
+
+You have to write the function findMissing (list) , list 
+
+will always be atleast 3 numbers. The missing term will 
+
+never be the first or last one.
+
+数组中至少会有三个数字，那么失踪的这个数将永远是第一项或者最后一项。
+</code></pre><h2 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h2><pre><code>1. [ -2, -3, -4, -5, -6, -7, -8, -10, -11, -12 ]===&gt;-9
+2. [ 0,-12,-18 ]====&gt;-6
+3. [ 1,7,10 ]===&gt;4
+4. [ -5,-17,-23]===&gt;-11
+5. [ -20,-58,-77 ]===&gt;-8
+6. [ -36,-76,-96 ]===&gt;39
+7. [ 17,95,134,173,212,251,290,329,368,407,446,485, ]===&gt;-56
+</code></pre><h2 id="等差数列的求和公式："><a href="#等差数列的求和公式：" class="headerlink" title="等差数列的求和公式："></a>等差数列的求和公式：</h2><pre><code>Sn = n(a1+an)/2;
+</code></pre><h2 id="大神代码："><a href="#大神代码：" class="headerlink" title="大神代码："></a>大神代码：</h2><pre><code>var findMissing = function (l) {  
+   // 等差数列的和-数组的和 = 丢失的数字
+  return ((l[0]+l[l.length-1])*(l.length+1))/2-(l.reduce((a,b)=&gt;a+b))
+
+}
+</code></pre><h2 id="我的代码："><a href="#我的代码：" class="headerlink" title="我的代码："></a>我的代码：</h2><pre><code>var findMissing = function (list) { 
+
+    var arr = [];
+
+    for(var i = 0; i &lt; list.length-1; i ++){
+        //得到相邻元素的差，并添加到数组中；
+        arr.push(list[i+1]-list[i]);
+    }
+    for(var j = 0; j &lt; arr.length; j ++){
+
+        if(arr[j] !== arr[j+1]){
+
+            //比较一下两个差的大小，选择那个绝对值比较小的差作为等差数列中的差；
+
+            var bad = Math.abs(arr[j])&lt;Math.abs(arr[j+1])?arr[j]:arr[j+1];
+
+            //判断bad的值，如果bad的值等于arr中靠后的元素，那个索引值index = j;否则index = j+1；  
+
+            var index = bad === arr[j+1]?j:j+1;
+
+            return list[index] + bad；
+        }
+    }
+
+ }    
+</code></pre>
       
     </div>
     
